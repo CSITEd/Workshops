@@ -50,6 +50,122 @@
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+Snap! est un logiciel qui permet d'écrire facilement des programmes qui ont pour but de décrire le comportement d'acteurs évoluant dans un monde. On peut ainsi par exemple manipuler une voiture dans une ville pour atteindre un objectif ou contrôler une souris à la recherche d'un morceau de fromage. La programmation de ces acteurs se fait à l'aide de la souris, en déplaçant des blocs à l'écran, représentant chacun une fonction bien définie.
 
+\begin{center}
+	\includegraphics[width=1.2cm]{images/mouse.png}
+	\hspace{2cm}
+	\raisebox{2mm}{\includegraphics[width=1.2cm]{images/cheese.png}}
+\end{center}
+
+Dans cette activité, il s'agira d'écrire un programme simple contrôlant une souris qui doit atteindre un fromage. Cette dernière se déplace dans les méandres de la cave de votre maison et doit suivre un chemin bien défini.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\section{Caractéristiques}
+
+{\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{>{\bf}ll}
+	Tranche d'âge & Primaire 3--6 / Secondaire 1--6 / Adultes\\
+	Temps minimal requis & 30 minutes \\
+	Mode de travail & Individuel ou en binôme \\
+	Matériel & -- \\
+	Ressources & Fichier du projet Snap! \\
+	Ordinateur & Oui \\
+	Version papier & Oui
+\end{tabular}}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\section{Déroulement}
+
+L'activité se déroule en deux phases. Lors de la première phase, l'animateur montre un exemple d'un simple programme tout en expliquant les concepts de base : acteur, blocs et combinaison de blocs. Lors de la seconde phase, c'est à l'apprenant de réaliser son propre programme sur un nouvel exemple un peu plus compliqué.
+
+Le monde est composé d'\textbf{acteurs} dont on peut décrire le comportement individuel. Dans le monde qui nous concerne, il y a deux acteurs : la souris et le fromage. Le comportement des acteurs est décrit par une succession de \textbf{blocs}. Dans cette activité, on va se limiter à deux types de blocs : les actions et les contrôles.
+
+Les \textbf{blocs d'action} permettent de faire effectuer une action à un acteur. On va utiliser quatre blocs d'action dans cette activité :
+\begin{itemize}
+	\item le bloc \textbf{avance} fait avancer la souris d'une case dans sa direction courante ;
+	\item le bloc \textbf{tourne à droite} fait tourner la souris sur elle-même d'un quart de tour vers la droite ;
+	\item le bloc \textbf{tourne à gauche} fait tourner la souris sur elle-même d'un quart de tour vers la gauche ;
+	\item et enfin, le bloc \textbf{ramasse} permet de ramasser le fromage (s'il est sur la même case que la souris).
+\end{itemize}
+
+\begin{center}
+	\includegraphics[height=0.55cm]{images/avance.png}
+	\hspace{1cm}
+	\includegraphics[height=0.55cm]{images/turn-left.png}
+	\hspace{1cm}
+	\includegraphics[height=0.55cm]{images/turn-right.png}
+	\hspace{1cm}
+	\includegraphics[height=0.55cm]{images/ramasse.png}
+\end{center}
+
+Les \textbf{blocs de contrôle} permettent d'ajouter de la structure aux programmes. On va utiliser deux blocs de contrôle dans cette activité :
+\begin{itemize}
+	\item le bloc de \textbf{démarrage} permet d'exécuter le comportement de l'acteur qui est sélectionné lors du clic sur le drapeau vert ;
+	\item et le bloc \textbf{répéter} permet de répéter une séquence d'actions un certain nombre de fois.
+\end{itemize}
+
+\begin{center}
+	\includegraphics[height=1cm]{images/start.png}
+	\hspace{1cm}
+	\includegraphics[height=1cm]{images/loop-repeat.png}
+\end{center}
+
+C'est en combinant ces différents blocs que l'on est capable de construire un programme décrivant un comportement plus ou moins complexe pour les différents acteurs.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\subsection{Terrain d'exemple}
+
+L'animateur présente les différents blocs et illustre le fonctionnement des deux premiers en construisant un exemple sur le premier terrain. La souris et le fromage forment un triangle comme le montre la figure ci-dessous :
+
+\begin{center}
+	\includegraphics[width=9.5cm]{images/terrain-1.png}
+\end{center}
+
+Afin d'atteindre le fromage, la souris doit avancer d'une case, tourner sur elle-même vers la gauche, puis de nouveau avancer d'une case. Elle se retrouve ainsi sur le fromage, et peut alors le ramasser. Le comportement de la souris sera décrit aux apprenants avec le programme suivant :
+
+\begin{center}
+	\includegraphics[width=4cm]{images/first-program.png}
+\end{center}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\subsection{Challenge}
+
+Une fois l'exemple simple montré aux apprenants, ils sont mis au challenge en devant réaliser par eux-mêmes un programme pour une variante du terrain. Cette fois-ci, le fromage est bien plus éloigné de la souris, mais on remarque que le chemin correspond en fait à trois fois le chemins du simple exemple. L'apprenant devra donc utiliser le bloc \textbf{répéter} avec une variante du programme établit précédemment.
+
+\begin{center}
+	\includegraphics[width=9.5cm]{images/terrain-2.png}
+\end{center}
+
+Les modifications à faire au programme précédent sont au nombre de deux. Il faut tout d'abord retirer le bloc \textbf{ramasser}. Ensuite, il faut, après avoir avancé, tourné à gauche et de nouveau avancé, tourner une fois à droite pour que la souris se remette dans la bonne direction (vers l'Est). On placera ces quatre blocs dans un bloc \textbf{répéter} trois fois, et on terminera par un bloc \textbf{ramasse} pour terminer.
+
+\clearpage
+Voici donc une solution possible à laquelle l'apprenant devrait arriver :
+
+\begin{center}
+	\includegraphics[width=4cm]{images/second-program.png}
+\end{center}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\section{Utilisation de l'interface}
+
+Le logiciel utilisé pour cette activité est Snap!, qui se lance simplement dans un navigateur web. Comme on peut le voir sur l'image ci-dessous, on distingue clairement trois parties à la fenêtre principale. De gauche à droite, on voit la boite contenant les blocs que l'on peut utiliser, la zone où l'on crée ses programmes et enfin la partie animation avec le terrain et les différents acteurs.
+
+\begin{center}
+	\includegraphics[width=17cm]{images/snap-interface.png}
+\end{center}
+
+\clearpage
+Voici les différentes actions sur l'interface qui seront vraisemblablement nécessaires pour programmer le comportement d'un acteur :
+\begin{itemize}
+	\item Il faut commencer par cliquer sur l'acteur dont on souhaite modifier le comportement, dans la partie en bas à droite de la fenêtre ;
+	\item On peut ensuite ajouter des blocs par un glissé-déposé, en les tirant depuis la boite à blocs sur la gauche ;
+	\item Un bloc placé peut être supprimé en le glissant-déposant dans la boite à blocs.
+\end{itemize}
 
 \end{document}
