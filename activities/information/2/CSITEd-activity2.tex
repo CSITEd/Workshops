@@ -1,0 +1,264 @@
+\documentclass[a4paper,11pt,final]{article}
+
+% Packages
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz,pgf}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\usetikzlibrary{shadows,patterns}
+
+% Longueurs
+\setlength\textheight{23cm}
+\setlength\textwidth{17cm}
+\setlength\oddsidemargin{-0.5cm}
+\setlength\topmargin{-15mm}
+\setlength\headheight{20mm}
+\setlength\parindent{0.0cm}
+\setlength\parskip{0.5cm}
+
+% Style
+\urlstyle{sf}
+
+\makeatletter
+\renewcommand\section{\vspace{-4mm}\@startsection {section}{1}{\z@}%
+   {-3.5ex \@plus -1ex \@minus -.2ex}%
+   {0.3ex \@plus.2ex}%
+   {\hspace{-2mm}\noindent\normalfont\Large\bfseries}}
+\makeatother
+
+% Entête et pied de page
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\includegraphics[width=2.5cm]{../../commonfiles/csited-logo.pdf}}
+\rhead{\sl \#2 Comprendre le binaire \\ Sébastien Combéfis}
+\lfoot{\color[gray]{0.5} \footnotesize Information / Binaire}
+\rfoot{\vfill\sf\thepage}
+\cfoot{}
+
+% Début du document
+\begin{document}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\begin{center}{\LARGE \emph{\#2 Comprendre le binaire}}\end{center}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Le binaire est à la base du fonctionnement de l'ordinateur, mais également du stockage et de l'échange d'information. On le retrouve ainsi dans le processeur et la mémoire de l'ordinateur, mais également sur des DVD ou dans des disques durs, par exemple.
+
+Dans cette activité, il s'agira de comprendre ce qu'est le binaire, et en particulier comment représenter des nombres entiers positifs en binaire. L'atelier fera découvrir comment convertir un nombre binaire en décimal et vice-versa.
+
+\begin{center}
+	\scalebox{0.8}{\begin{tikzpicture}[card/.style={draw,fill=white,drop shadow}]
+		\begin{scope}[rotate=20]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\fill[black] (0.5,0.75) circle[radius=1.1mm];
+		\end{scope}
+		\begin{scope}[xshift=1.7cm,rotate=-10]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\fill[black] (0.4,1) circle[radius=1.1mm];
+			\fill[black] (0.6,0.4) circle[radius=1.1mm];
+		\end{scope}
+		\begin{scope}[xshift=4cm,rotate=10]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1,0.4}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+		\end{scope}
+		\begin{scope}[xshift=6cm,rotate=-20]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1.15,0.85,0.55,0.25}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+		\end{scope}
+	\end{tikzpicture}}
+\end{center}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\section{Caractéristiques}
+
+{\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{>{\bf}ll}
+	Tranche d'âge & Primaire 1--6 / Secondaire 1--6 / Adultes\\
+	Temps minimal requis & 15 minutes \\
+	Mode de travail & Individuel \\
+	Matériel & -- \\
+	Ressources & Cartes avec les valeurs de base du binaire, fiches d'exercices \\
+	Version papier & Oui \\
+	Ordinateur & Non \\
+	Thèmes & Information, Binaire
+\end{tabular}}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\section{Déroulement}
+
+Le but de l'activité est de faire comprendre la notation binaire aux apprenants. On introduira l'activité en rappelant comment on note les nombres dans le système usuel décimal. Dans ce système, il y a 10 chiffres et on les combine pour représenter des nombres. On part des unités, puis viennent les dizaines, les centaines... Le binaire suit le même principe si ce n'est qu'il n'y a que deux chiffres différents, à savoir $0$ et $1$.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\subsection{Binaire vers décimal}
+
+L'animateur montre un nombre binaire de quatre chiffres, en l'occurrence le nombre \textbf{0110}. Le but est de déterminer quel est le nombre entier positif qui est représenté. L'idée consiste à commencer par aligner les cartes sous le nombre binaire à convertir, en ordre décroissant du nombre de points qu'elles contiennent :
+
+\begin{center}
+	\scalebox{0.8}{\begin{tikzpicture}[card/.style={draw,fill=white,drop shadow}]
+		\begin{scope}[xshift=4.5cm]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\fill[black] (0.5,0.75) circle[radius=1.1mm];
+			\node[scale=2] at (0.5,2.25) {\bf 0};
+		\end{scope}
+		\begin{scope}[xshift=3cm]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\fill[black] (0.4,1) circle[radius=1.1mm];
+			\fill[black] (0.6,0.4) circle[radius=1.1mm];
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+		\begin{scope}[xshift=1.5cm]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1,0.4}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+		\begin{scope}
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1.15,0.85,0.55,0.25}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+			\node[scale=2] at (0.5,2.25) {\bf 0};
+		\end{scope}
+	\end{tikzpicture}}
+\end{center}
+
+Ensuite, on parcourt le nombre binaire et on ne garde que les cartes se trouvant sous un \textbf{1}, et on retourne les autres. Pour connaitre le nombre décimal représenté, on compte simplement le nombre total de points, à savoir $6$ pour l'exemple. Donc, le nombre entier $6$ s'écrit en binaire \textbf{110} (tout comme en décimal, on peut ignorer les $0$ devant le nombre.
+
+\begin{center}
+	\scalebox{0.8}{\begin{tikzpicture}[card/.style={draw,fill=white,drop shadow}]
+		\begin{scope}
+			\draw[card,fill=black!50] (0,0) rectangle (1,1.5);
+			\node[scale=2] at (0.5,2.25) {\bf 0};
+		\end{scope}
+		\begin{scope}[xshift=3cm]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\fill[black] (0.4,1) circle[radius=1.1mm];
+			\fill[black] (0.6,0.4) circle[radius=1.1mm];
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+		\begin{scope}[xshift=1.5cm]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1,0.4}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+		\begin{scope}[xshift=4.5cm]
+			\draw[card,fill=black!50] (0,0) rectangle (1,1.5);
+			\node[scale=2] at (0.5,2.25) {\bf 0};
+		\end{scope}
+	\end{tikzpicture}}
+\end{center}
+
+C'est maintenant à l'apprenant à convertir des nombres binaires. L'animateur lui présente une fiche d'exercices, adaptée à son niveau (c'est-à-dire avec des nombres contenant plus ou moins de chiffres) comportant des nombres binaires à convertir en décimal.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\subsection{Décimal vers binaire}
+
+Une fois la conversion de nombres binaires en nombres décimaux maitrisée, on va s'intéresser à l'opération inverse. Tout comme précédemment, l'animateur va commencer par présenter la technique aux apprenants, en montrant un nombre décimal, en l'occurrence \textbf{13}. L'idée consiste à parcourir les cartes en partant de la plus à gauche. La première carte comporte $8$ points et on doit représenter le nombre $13$. On va donc prendre cette carte et il reste ainsi $13 - 8 = 5$ à représenter.
+
+\begin{center}
+	\scalebox{0.8}{\begin{tikzpicture}[card/.style={draw,fill=white,drop shadow}]
+		\begin{scope}
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1.15,0.85,0.55,0.25}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+	\end{tikzpicture}}
+\end{center}
+
+On poursuit donc avec la carte suivante qui comporte $4$ points et on doit encore représenter $5$. On va donc prendre la carte, ce qui laisse $5 - 4 = 1$ à représenter.
+
+\begin{center}
+	\scalebox{0.8}{\begin{tikzpicture}[card/.style={draw,fill=white,drop shadow}]
+		\begin{scope}[xshift=1.5cm]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1,0.4}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+		\begin{scope}
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1.15,0.85,0.55,0.25}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+	\end{tikzpicture}}
+\end{center}
+
+La carte suivante comporte deux points, mais on ne doit représenter que $1$. Par conséquent, on ne la prend pas. Enfin, il reste la dernière carte qui compte un point que l'on va prendre. On obtient donc \textbf{1101} comme représentation binaire du nombre décimal $13$.
+
+\begin{center}
+	\scalebox{0.8}{\begin{tikzpicture}[card/.style={draw,fill=white,drop shadow}]
+		\begin{scope}[xshift=4.5cm]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\fill[black] (0.5,0.75) circle[radius=1.1mm];
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+		\begin{scope}[xshift=3cm]
+			\draw[card,fill=black!50] (0,0) rectangle (1,1.5);
+			\node[scale=2] at (0.5,2.25) {\bf 0};
+		\end{scope}
+		\begin{scope}[xshift=1.5cm]
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1,0.4}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+		\begin{scope}
+			\draw[card] (0,0) rectangle (1,1.5);
+			\foreach \x in {0.3,0.7}{
+				\foreach \y in {1.15,0.85,0.55,0.25}{
+					\fill[black] (\x,\y) circle[radius=1.1mm];
+				}
+			}
+			\node[scale=2] at (0.5,2.25) {\bf 1};
+		\end{scope}
+	\end{tikzpicture}}
+\end{center}
+
+Une fois cette conversion présentée à l'apprenant, c'est à lui de jouer. L'animateur lui présente une fiche d'exercices, de nouveau adapté à son niveau, comportant des nombres décimaux qu'il doit convertir en binaire.
+
+\end{document}
