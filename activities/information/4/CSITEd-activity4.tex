@@ -1,0 +1,92 @@
+\documentclass[a4paper,11pt,final]{article}
+
+% Packages
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz,pgf}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+% Longueurs
+\setlength\textheight{23cm}
+\setlength\textwidth{17cm}
+\setlength\oddsidemargin{-0.5cm}
+\setlength\topmargin{-15mm}
+\setlength\headheight{20mm}
+\setlength\parindent{0.0cm}
+\setlength\parskip{0.5cm}
+
+% Style
+\urlstyle{sf}
+
+\makeatletter
+\renewcommand\section{\vspace{-4mm}\@startsection {section}{1}{\z@}%
+   {-3.5ex \@plus -1ex \@minus -.2ex}%
+   {0.3ex \@plus.2ex}%
+   {\hspace{-2mm}\noindent\normalfont\Large\bfseries}}
+\makeatother
+
+% Entête et pied de page
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\includegraphics[width=2.5cm]{../../commonfiles/csited-logo.pdf}}
+\rhead{\sl \#4 Cachons l'information sur un rouleau ! \\ Sébastien Combéfis}
+\lfoot{\color[gray]{0.5} \footnotesize Information / Cryptographie}
+\rfoot{\vfill\sf\thepage}
+\cfoot{}
+
+% Début du document
+\begin{document}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\begin{center}{\LARGE \emph{\#4 Cachons l'information sur un rouleau !}}\end{center}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Certaines informations sont sensibles et doivent être cachées afin de ne pouvoir être lues que par l'expéditeur et le destinataire du message. Plusieurs techniques sont utilisables pour rendre une information illisible par tout individu malhonnête qui volerait un message qui ne lui est pas destiné.
+
+Dans cette activité, on va comprendre les principes de bases de la cryptographie, une branche à la frontière entre l'informatique et les mathématiques. On y découvre notamment la notion de message clair et chiffré et de clé de chiffrement.
+
+\begin{center}
+	\scalebox{0.8}{\begin{tikzpicture}[font=\sf]
+		\draw (0,0) ellipse[x radius=3mm,y radius=5mm];
+		\draw (0,0.5) -- (4,1);
+		\draw (0,-0.5) -- (4,0);
+		\draw (4,0) arc[x radius=3mm,y radius=5mm,start angle=-90,end angle=90];
+		%%%
+		\node at (0.75,0.1) {H};
+		\node at (1.5,0.2) {E};
+		\node at (2.25,0.3) {L};
+		\node at (3,0.4) {L};
+		\node at (3.75,0.5) {O};
+	\end{tikzpicture}}
+\end{center}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\section{Caractéristiques}
+
+{\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{>{\bf}ll}
+	Tranche d'âge & Primaire 3--6 / Secondaire 1--6 / Adultes \\
+	Temps minimal requis & 10 minutes \\
+	Mode de travail & Individuel \\
+	Matériel & -- \\
+	Ressources & Bandelettes de papier et cylindres de diamètres différents \\
+	Version papier & Oui \\
+	Ordinateur & Non \\
+	Thèmes & Information, Cryptographie
+\end{tabular}}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\section{Déroulement}
+
+\end{document}
