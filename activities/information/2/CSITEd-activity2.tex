@@ -10,6 +10,8 @@
 \usepackage{array}
 \usepackage{amsmath,amssymb}
 \usepackage{tikz,pgf}
+\usepackage[tikz]{bclogo}
+\usepackage{multicol}
 \usepackage{hyperref}
 \usepackage{microtype}
 
@@ -34,12 +36,16 @@
    {\hspace{-2mm}\noindent\normalfont\Large\bfseries}}
 \makeatother
 
+\renewcommand\bcStyleTitre[1]{\sf\bfseries #1\hfill}
+\renewcommand\logowidth{12pt}
+\presetkeys{bclogo}{couleur=black!10,arrondi=0.1,logo=\bcquestion,epBord=0.4}{}
+
 % Entête et pied de page
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
 \lhead{\includegraphics[width=2.5cm]{../../commonfiles/csited-logo.pdf}}
 \rhead{\sl \#2 Comprendre le binaire \\ Sébastien Combéfis}
-\lfoot{\color[gray]{0.5} \footnotesize Information / Binaire}
+\lfoot{\raisebox{-1mm}{\includegraphics[width=2cm]{../../commonfiles/by-nc-nd.pdf}} \color[gray]{0.5} \footnotesize Information / Binaire}
 \rfoot{\vfill\sf\thepage}
 \cfoot{}
 
@@ -260,5 +266,59 @@ La carte suivante comporte deux points, mais on ne doit représenter que $1$. Par
 \end{center}
 
 Une fois cette conversion présentée à l'apprenant, c'est à lui de jouer. L'animateur lui présente une fiche d'exercices, de nouveau adapté à son niveau, comportant des nombres décimaux qu'il doit convertir en binaire.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\section{Tâches Bebras}
+
+\begin{tabular}{|p{0.97\textwidth}|}
+	\hline
+	\ \parbox{0.95\textwidth}{\medskip\setlength{\parskip}{4mm}
+		\textbf{Castor 101} (2012-JP-01) \hfill par Yoshiaki Nakano (JP)
+		
+		Une équipe de castors joue à sortir leurs têtes par des trous. Durant l'étape 0, aucun castor ne sort sa tête. À l'étape 1, un castor sort sa tête du trou tout à droite. À l'étape 2, un castor sort sa tête du trou du milieu. Toutes les étapes du jeu sont représentées ci-dessous, la première ligne correspondant à l'étape 0.
+		
+		\includegraphics[width=5.5cm]{images/beaver-holes.png}
+		
+		\bigskip
+		\begin{bclogo}[barre=none]{Question}\sl
+			Devine les règles du jeu et trouve quelle image correspond à la sixième étape.
+		\end{bclogo}
+		
+		\begin{enumerate}
+			\item \parbox[B]{5cm}{\includegraphics[width=5cm]{images/beaver-holes-A.png}}
+			\item \parbox[B]{5cm}{\includegraphics[width=5cm]{images/beaver-holes-B.png}}
+			\item \parbox[B]{5cm}{\includegraphics[width=5cm]{images/beaver-holes-C.png}}
+			\item \parbox[B]{5cm}{\includegraphics[width=5cm]{images/beaver-holes-D.png}}
+		\end{enumerate}
+		\medskip\ 
+	} \\
+	\hline
+\end{tabular}
+
+\begin{tabular}{|p{0.97\textwidth}|}
+	\hline
+	\ \parbox{0.95\textwidth}{\medskip\setlength{\parskip}{4mm}
+		\textbf{Castor Shop} (2012-FI-01b) \hfill par Juha Vartiainen (FI)
+		
+		Il y a un magasin particulier dans Bebras City. Ce magasin ne vend en effet que seize produits. Le premier produit coute un Bebras, le second coute deux Bebras, le troisième coute trois Bebras, etc. En résumé, chaque produit coute entre un et seize Bebras et il n'y a pas deux produits avec le même prix.
+		
+		Pierre Castor a exactement trois pièces : une qui vaut un Bebras, la seconde vaut deux Bebras et la dernière vaut huit Bebras.
+		
+		\bigskip
+		\begin{bclogo}[barre=none]{Question}\sl
+			Parmi les seize produits, combien Pierre Castor \textbf{ne} peut-il \textbf{pas} acheter en payant exactement le prix exact, à l'aide de ses trois pièces ?
+		\end{bclogo}
+		
+		\begin{enumerate}\renewcommand{\labelenumi}{(\Alph{enumi})}\small
+			\item 13
+			\item 9
+			\item 8
+			\item 5
+		\end{enumerate}
+		\medskip\ 
+	} \\
+	\hline
+\end{tabular}
 
 \end{document}
