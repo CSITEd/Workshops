@@ -12,4 +12,7 @@ The proposed activities are organised in several categories:
 * Sorting
 
 ## Contributors
+
+* Adrien Bibal
 * Sébastien Combéfis
+* Julien Dupuis
